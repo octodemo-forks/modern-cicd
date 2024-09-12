@@ -9,14 +9,6 @@ repos:
       - id: trailing-whitespace
       - id: end-of-file-fixer
 
-  # PHP Code Sniffer for linting PHP code
-  - repo: https://github.com/PHPCSStandards/PHP_CodeSniffer
-    rev: v3.10.2
-    hooks:
-      - id: phpcs
-        name: PHP CodeSniffer
-        args: ['--standard=PSR12']
-
   # Terraform hooks for linting and formatting Terraform code
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.95.0
