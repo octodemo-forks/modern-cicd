@@ -35,3 +35,12 @@ updates:
     commit-message:
       prefix: php
     open-pull-requests-limit: 10
+
+  # Terraform updates
+  - package-ecosystem: terraform
+    directory: /terraform
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: terraform
+    open-pull-requests-limit: 10
