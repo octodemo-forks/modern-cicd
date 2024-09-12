@@ -53,7 +53,7 @@ jobs:
 
     - name: debug
       run: |
-        kubectl get current-context
+        kubectl config current-context
         kubectl get nodes
 
     - name: Deploy Helm chart
