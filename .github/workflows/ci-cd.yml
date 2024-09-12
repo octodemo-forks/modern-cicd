@@ -53,7 +53,7 @@ jobs:
 
     - name: Deploy Helm chart
       run: |
-        helm upgrade --install sample-php-app ./helm
+        helm upgrade --debug --install sample-php-app ./helm
 
   argocd-sync:
     runs-on: ubuntu-latest
