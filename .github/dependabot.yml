@@ -1,0 +1,37 @@
+version: 2
+updates:
+  # Docker updates
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: docker
+    open-pull-requests-limit: 10
+
+  # GitHub Actions updates
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: actions
+    open-pull-requests-limit: 10
+
+  # Helm chart dependencies
+  - package-ecosystem: helm
+    directory: /helm
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: helm
+    open-pull-requests-limit: 10
+
+  # PHP (Composer) dependencies
+  - package-ecosystem: composer
+    directory: /src
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: php
+    open-pull-requests-limit: 10
