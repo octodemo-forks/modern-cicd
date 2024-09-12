@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/jeffwhite06/modern-cicd.git'
     path: helm
-    targetRevision: HEAD
+    targetRevision: main
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default

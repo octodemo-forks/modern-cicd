@@ -21,6 +21,10 @@ jobs:
 
     permissions:
       pull-requests: write
+
+    defaults:
+      run:
+        working-directory: terraform
     
     # Define environment variables for AWS and Terraform
     env:

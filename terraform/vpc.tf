@@ -55,7 +55,7 @@ resource "aws_route_table" "private_route_table" {
 }
 
 resource "aws_route_table_association" "public_route_assoc" {
-  for_each = { for k,v in aws_subnet.public_subnet :
+  for_each = { for k, v in aws_subnet.public_subnet :
     k => v
   }
 
@@ -64,7 +64,7 @@ resource "aws_route_table_association" "public_route_assoc" {
 }
 
 resource "aws_route_table_association" "private_route_assoc" {
-  for_each = { for k,v in aws_subnet.private_subnet :
+  for_each = { for k, v in aws_subnet.private_subnet :
     k => v
   }
 

@@ -1,62 +1,48 @@
-resource "aws_iam_role" "cluster_role" {
-  for_each = toset(["eks", "ec2"])
+module "eks" {
+  source = "terraform-aws-modules/eks/aws"
 
-  name = "${each.value}ClusterRole"
+  cluster_name                             = "argo"
+  cluster_version                          = "1.30"
+  enable_cluster_creator_admin_permissions = true
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
+  vpc_id                         = aws_vpc.eks_vpc.id
+  subnet_ids                     = concat(aws_subnet.public_subnet[*].id, aws_subnet.private_subnet[*].id)
+  cluster_endpoint_public_access = true
 
-    Statement = [{
-      Action = "sts:AssumeRole"
-      Effect = "Allow"
-      Principal = {
-        Service = "${each.value}.amazonaws.com"
+  cluster_addons = {
+    coredns                = {}
+    eks-pod-identity-agent = {}
+    kube-proxy             = {}
+    vpc-cni                = {}
+  }
+
+  eks_managed_node_groups = {
+    argo-node-group = {
+      instance_types = ["t3.medium"]
+      capacity_type  = "SPOT"
+
+      subnet_ids = aws_subnet.private_subnet[*].id
+
+      min_size     = 1
+      max_size     = 3
+      desired_size = 2
+    }
+  }
+
+  access_entries = {
+    admins = {
+      principal_arn = "arn:aws:iam::571017864222:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AdministratorAccess12hr_b3ba96c04a8d56a0"
+
+      policy_associations = {
+        admins = {
+          policy_arn   = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
       }
-    }]
-  })
-}
-
-resource "aws_iam_role_policy_attachment" "eks_policy" {
-  for_each = toset(["AmazonEKSClusterPolicy", "AmazonEKSServicePolicy"])
-
-  policy_arn = "arn:aws:iam::aws:policy/${each.value}"
-  role       = aws_iam_role.cluster_role["eks"].name
-}
-
-resource "aws_iam_role_policy_attachment" "ec2_policy" {
-  for_each = toset(["AmazonEKSWorkerNodePolicy", "AmazonEKS_CNI_Policy", "AmazonEC2ContainerRegistryReadOnly"])
-
-  policy_arn = "arn:aws:iam::aws:policy/${each.value}"
-  role       = aws_iam_role.cluster_role["ec2"].name
-}
-
-resource "aws_eks_cluster" "argo" {
-  name     = "argo"
-  role_arn = aws_iam_role.cluster_role["eks"].arn
-
-  vpc_config {
-    subnet_ids             = concat(aws_subnet.public_subnet[*].id, aws_subnet.private_subnet[*].id)
-    endpoint_public_access = true
+    }
   }
-}
-
-resource "aws_eks_node_group" "argo" {
-  cluster_name    = aws_eks_cluster.argo.name
-  node_group_name = "argo-node-group"
-  node_role_arn   = aws_iam_role.cluster_role["ec2"].arn
-  subnet_ids      = aws_subnet.private_subnet[*].id
-
-  scaling_config {
-    desired_size = 2
-    max_size     = 3
-    min_size     = 1
-  }
-
-  instance_types = ["t3.medium"]
-}
-
-data "aws_eks_cluster_auth" "argo" {
-  name = aws_eks_cluster.argo.name
 }
 
 resource "helm_release" "argocd" {
