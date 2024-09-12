@@ -51,9 +51,12 @@ jobs:
     - name: Update kube config
       run: aws eks update-kubeconfig --name argo --region us-west-2
 
+    - name: debug
+      run: kubectl get nodes
+
     - name: Deploy Helm chart
       run: |
-        helm upgrade --debug --install sample-php-app ./helm
+        helm upgrade --install sample-php-app ./helm
 
   argocd-sync:
     runs-on: ubuntu-latest
