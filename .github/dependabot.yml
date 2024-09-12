@@ -18,15 +18,6 @@ updates:
       prefix: actions
     open-pull-requests-limit: 10
 
-  # Helm chart dependencies
-  - package-ecosystem: helm
-    directory: /helm
-    schedule:
-      interval: weekly
-    commit-message:
-      prefix: helm
-    open-pull-requests-limit: 10
-
   # PHP (Composer) dependencies
   - package-ecosystem: composer
     directory: /src

@@ -1,0 +1,39 @@
+# .pre-commit-config.yaml
+repos:
+  # Pre-commit hooks for general YAML and JSON linting
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: check-json
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+
+  # PHP Code Sniffer for linting PHP code
+  - repo: https://github.com/PHPCSStandards/PHP_CodeSniffer
+    rev: v3.10.2
+    hooks:
+      - id: phpcs
+        name: PHP CodeSniffer
+        args: ['--standard=PSR12']
+
+  # Terraform hooks for linting and formatting Terraform code
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.95.0
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+      - id: terraform_docs
+      - id: checkov
+
+  # Dockerfile linting
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint
+
+  # Markdown linting
+  - repo: https://github.com/markdownlint/markdownlint
+    rev: v0.13.0
+    hooks:
+      - id: markdownlint
