@@ -18,15 +18,6 @@ updates:
       prefix: actions
     open-pull-requests-limit: 10
 
-  # PHP (Composer) dependencies
-  - package-ecosystem: composer
-    directory: /src
-    schedule:
-      interval: weekly
-    commit-message:
-      prefix: php
-    open-pull-requests-limit: 10
-
   # Terraform updates
   - package-ecosystem: terraform
     directory: /terraform
