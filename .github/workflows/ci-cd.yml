@@ -52,7 +52,9 @@ jobs:
       run: aws eks update-kubeconfig --name argo --region us-west-2
 
     - name: debug
-      run: kubectl get nodes
+      run: |
+        kubectl get current-context
+        kubectl get nodes
 
     - name: Deploy Helm chart
       run: |
