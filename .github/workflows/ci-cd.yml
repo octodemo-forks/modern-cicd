@@ -51,13 +51,9 @@ jobs:
     - name: Update kube config
       run: aws eks update-kubeconfig --name argo --region us-west-2
 
-    - name: Setup Helm
-      run: |
-        curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-
     - name: Deploy Helm chart
       run: |
-        helm upgrade --install php ./helm --namespace default --set image.repository=${{ secrets.DOCKER_USERNAME }}/sample-php-app,image.tag=latest
+        helm upgrade --install sample-php-app ./helm
 
   argocd-sync:
     runs-on: ubuntu-latest
