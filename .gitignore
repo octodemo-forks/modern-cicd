@@ -44,3 +44,8 @@ terraform.rc
 # Trunk Check
 
 .trunk
+
+# PHP
+
+php/vendor
+composer.lock
