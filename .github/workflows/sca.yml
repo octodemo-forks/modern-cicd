@@ -4,6 +4,11 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/sca.yml
   schedule:
     - cron: "0 0 * * 2"
   workflow_dispatch: # Allows manual triggering of the workflow
@@ -25,7 +30,7 @@ jobs:
 
       # Upload Hadolint SARIF file to GitHub Code Scanning
       - name: Upload Hadolint SARIF to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: hadolint.sarif
 
@@ -46,7 +51,7 @@ jobs:
 
       # Upload Trivy SARIF file to GitHub Code Scanning
       - name: Upload Trivy SARIF to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: trivy.sarif
 
@@ -69,7 +74,7 @@ jobs:
 
       # Upload Helm Lint SARIF to GitHub Code Scanning
       - name: Upload Helm Lint SARIF to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: helm.sarif
 
@@ -88,7 +93,7 @@ jobs:
 
       # Upload Kube-score SARIF to GitHub Code Scanning
       - name: Upload Kube-score SARIF to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: kube-score.sarif
 
@@ -111,7 +116,7 @@ jobs:
 
       # Upload terraform scanning SARIF to GitHub Code Scanning
       - name: Upload terraform SARIF to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: terraform.sarif
 
@@ -139,7 +144,7 @@ jobs:
         working-directory: ./php
 
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: phpstan-results.sarif
           wait-for-processing: true
