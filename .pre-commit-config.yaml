@@ -29,3 +29,26 @@ repos:
     rev: v0.13.0
     hooks:
       - id: markdownlint
+
+  - repo: local
+    hooks:
+      # PHP Lint (syntax checking)
+      - id: php-lint
+        name: PHP linting (php -l)
+        entry: bash -c 'find . -name "*.php" -exec php -l {} \;'
+        language: system
+        types: [php]
+
+      # PHP CodeSniffer (code style checking)
+      - id: phpcs
+        name: PHP CodeSniffer
+        entry: ./php/vendor/bin/phpcs --standard=PSR12
+        language: system
+        types: [php]
+
+      # PHP-CS-Fixer (optional: for fixing code style issues)
+      - id: php-cs-fixer
+        name: PHP-CS-Fixer
+        entry: ./php/vendor/bin/php-cs-fixer fix --diff
+        language: system
+        types: [php]

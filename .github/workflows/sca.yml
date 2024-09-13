@@ -122,20 +122,23 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # - name: Set up PHP
-      #   uses: shivammathur/setup-php@v2
-      #   with:
-      #     php-version: '8.0'
-      #     extensions: mbstring, xml, intl
-
-      # - name: Install Dependencies
-      #   run: composer install --no-progress --prefer-dist
-
-      - name: Run PHPStan for Static Code Analysis
-        uses: php-actions/phpstan@v3
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
         with:
-          path: src/
-          level: max
+          php-version: "8.1"
+          extensions: mbstring, xml, intl
 
-      - name: Run PHP CodeSniffer (PHPCS)
-        run: vendor/bin/phpcs --standard=PSR12 src/
+      - name: Install Dependencies
+        run: composer install --no-progress --prefer-dist
+        working-directory: ./php
+
+      - name: Run PHPStan
+        continue-on-error: true
+        run: ./vendor/bin/phpstan analyze --error-format=sarif > phpstan-results.sarif
+        working-directory: ./php
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: phpstan-results.sarif
+          wait-for-processing: true

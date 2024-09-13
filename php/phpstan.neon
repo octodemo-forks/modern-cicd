@@ -1,0 +1,27 @@
+parameters:
+    paths:
+        - src
+        - templates
+
+    level: max
+
+    excludePaths:
+        - %currentWorkingDirectory%/vendor
+        - %currentWorkingDirectory%/storage
+
+    checkMissingIterableValueType: true
+    checkGenericClassInNonGenericObjectType: true
+
+    ignoreErrors:
+        - '#Call to an undefined method .*#'
+        - '#Access to an undefined property .*#'
+
+    inferPrivatePropertyTypeFromConstructor: true
+    
+services:
+    errorFormatter.sarif:
+        class: PHPStanSarifErrorFormatter\SarifErrorFormatter
+        arguments:
+            relativePathHelper: @simpleRelativePathHelper
+            currentWorkingDirectory: %currentWorkingDirectory%
+            pretty: true

@@ -18,7 +18,7 @@ resource "aws_subnet" "private_subnet" {
   availability_zone = element(data.aws_availability_zones.available.names, count.index)
 
   tags = {
-    "kubernetes.io/role/internal-elb" = 1
+    "kubernetes.io/role/internal-elb"             = 1
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
   }
 }
@@ -32,7 +32,7 @@ resource "aws_subnet" "public_subnet" {
   map_public_ip_on_launch = true
 
   tags = {
-    "kubernetes.io/role/elb" = 1
+    "kubernetes.io/role/elb"                      = 1
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
   }
 }
