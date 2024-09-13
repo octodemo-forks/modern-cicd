@@ -6,11 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "https://github.com/jeffwhite06/modern-cicd.git"
+    repoURL: https://github.com/jeffwhite06/modern-cicd.git
     path: helm
     targetRevision: main
   destination:
-    server: "https://kubernetes.default.svc"
+    server: https://kubernetes.default.svc
     namespace: default
   syncPolicy:
     automated:

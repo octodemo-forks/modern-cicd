@@ -49,8 +49,7 @@ ingress:
   className: ""
   annotations: {}
   hosts:
-    - host: example.com
-      paths:
+    - paths:
         - path: /
           pathType: Prefix
 

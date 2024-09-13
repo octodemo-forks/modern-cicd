@@ -1,7 +1,11 @@
+locals {
+  cluster_name = "argo"
+}
+
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
 
-  cluster_name                             = "argo"
+  cluster_name                             = local.cluster_name
   cluster_version                          = "1.30"
   enable_cluster_creator_admin_permissions = true
 
@@ -45,18 +49,57 @@ module "eks" {
   }
 }
 
+module "lb_role" {
+  source = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+
+  role_name                              = "${module.eks.cluster_name}_eks_lb"
+  attach_load_balancer_controller_policy = true
+
+  oidc_providers = {
+    main = {
+      provider_arn               = module.eks.oidc_provider_arn
+      namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
+    }
+  }
+}
+
+resource "helm_release" "alb-controller" {
+  name       = "aws-load-balancer-controller"
+  repository = "https://aws.github.io/eks-charts"
+  chart      = "aws-load-balancer-controller"
+  namespace  = "kube-system"
+
+  set {
+    name  = "region"
+    value = "us-west-2"
+  }
+
+  set {
+    name  = "vpcId"
+    value = aws_vpc.eks_vpc.id
+  }
+
+  set {
+    name  = "serviceAccount.name"
+    value = "aws-load-balancer-controller"
+  }
+
+  set {
+    name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+    value = module.lb_role.iam_role_arn
+  }
+
+  set {
+    name  = "clusterName"
+    value = module.eks.cluster_name
+  }
+}
+
 resource "helm_release" "argocd" {
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
   namespace        = "argocd"
   create_namespace = true
-
-  values = [
-    <<EOF
-server:
-  service:
-    type: LoadBalancer
-  EOF
-  ]
+  values           = [file("argocd-values.yml")]
 }

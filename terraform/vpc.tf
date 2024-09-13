@@ -16,6 +16,11 @@ resource "aws_subnet" "private_subnet" {
   vpc_id            = aws_vpc.eks_vpc.id
   cidr_block        = element(["10.0.1.0/24", "10.0.2.0/24"], count.index)
   availability_zone = element(data.aws_availability_zones.available.names, count.index)
+
+  tags = {
+    "kubernetes.io/role/internal-elb" = "1"
+    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+  }
 }
 
 resource "aws_subnet" "public_subnet" {
@@ -25,6 +30,11 @@ resource "aws_subnet" "public_subnet" {
   cidr_block              = element(["10.0.3.0/24", "10.0.4.0/24"], count.index)
   availability_zone       = element(data.aws_availability_zones.available.names, count.index)
   map_public_ip_on_launch = true
+
+  tags = {
+    "kubernetes.io/role/elb" = "1"
+    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+  }
 }
 
 resource "aws_eip" "nat_eip" {
