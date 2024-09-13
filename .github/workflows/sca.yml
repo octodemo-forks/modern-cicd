@@ -85,7 +85,7 @@ jobs:
       # Install kube-score
       - name: Install kube-score
         run: |
-          curl -L -o kube-score https://github.com/zegl/kube-score/releases/download/v1.18.0/kube-score_1.18.0_linux_arm64
+          curl -L -o kube-score https://github.com/zegl/kube-score/releases/download/v1.18.0/kube-score_1.18.0_linux_$(uname -p)64
           chmod +x kube-score
           sudo mv kube-score /usr/local/bin/
 
@@ -128,6 +128,10 @@ jobs:
     name: PHP Static Code Analysis
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./php
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -140,15 +144,13 @@ jobs:
 
       - name: Install Dependencies
         run: composer install --no-progress --prefer-dist
-        working-directory: ./php
 
       - name: Run PHPStan
         continue-on-error: true
         run: ./vendor/bin/phpstan analyze --error-format=sarif > phpstan-results.sarif
-        working-directory: ./php
 
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: phpstan-results.sarif
+          sarif_file: ./php/phpstan-results.sarif
           wait-for-processing: true
