@@ -52,6 +52,7 @@ service:
 ingress:
   enabled: false
   className: ""
+  annotations: {}
   hosts:
     - paths:
         - path: /
