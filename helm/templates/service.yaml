@@ -4,6 +4,10 @@ metadata:
   name: {{ include "php.fullname" . }}
   labels:
     {{- include "php.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -11,9 +15,5 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-  {{- with .Values.service.annotations }}
-  annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
   selector:
     {{- include "php.selectorLabels" . | nindent 4 }}
