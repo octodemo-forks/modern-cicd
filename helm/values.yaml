@@ -42,12 +42,16 @@ securityContext:
 
 service:
   type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: instance
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    service.beta.kubernetes.io/aws-load-balancer-attributes: load_balancing.cross_zone.enabled=true
   port: 80
 
 ingress:
   enabled: false
   className: ""
-  annotations: {}
   hosts:
     - paths:
         - path: /
