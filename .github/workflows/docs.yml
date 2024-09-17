@@ -6,6 +6,9 @@ on:
       - main # Trigger when changes are pushed to the main branch
   workflow_dispatch: # Allow manual trigger from GitHub Actions UI
 
+permissions:
+  contents: write
+
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
