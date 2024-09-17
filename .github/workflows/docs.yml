@@ -90,11 +90,10 @@ jobs:
   tf-docs:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./terraform
-
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Render terraform docs inside the README.md and push changes back to PR branch
         uses: terraform-docs/gh-actions@v1.2.2
         with:
