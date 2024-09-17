@@ -49,6 +49,8 @@ terraform.rc
 
 php/vendor
 composer.lock
+php/docs
+php/.phpdoc
 
 # mac
 .DS_Store
