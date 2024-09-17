@@ -13,6 +13,9 @@ jobs:
   php-docs:
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: docs
+
     defaults:
       run:
         working-directory: ./php
@@ -54,6 +57,9 @@ jobs:
   helm-docs:
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: docs
+
     steps:
       # Step 1: Checkout the repository
       - name: Checkout code
@@ -89,6 +95,9 @@ jobs:
 
   tf-docs:
     runs-on: ubuntu-latest
+
+    concurrency:
+      group: docs
 
     steps:
       - name: Checkout code
