@@ -1,0 +1,49 @@
+name: Generate Documentation and Update README
+
+on:
+  push:
+    branches:
+      - main # Trigger when changes are pushed to the main branch
+  workflow_dispatch: # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./php
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up PHP
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1" # Choose the PHP version you need
+          extensions: mbstring, xml
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
+      # Step 4: Generate documentation (in Markdown format)
+      - name: Generate documentation
+        run: |
+          docker run --rm -v $(pwd):/data phpdoc/phpdoc -d . -t ./docs --template="vendor/saggre/phpdocumentor-markdown/themes/markdown"
+          # Move the generated documentation to README.md
+          cat docs/Home.md > README.md
+
+      # Step 5: Commit and push updated README.md to the repository
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update README with latest documentation"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
