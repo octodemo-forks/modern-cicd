@@ -2,7 +2,8 @@
   "name": "jeffwhite/storefront",
   "description": "Sample Storefront Website",
   "require": {
-    "twig/twig": "^3.14"
+    "twig/twig": "^3.14",
+    "jimdo/prometheus_client_php": "^0.9.1"
   },
   "autoload": {
     "psr-4": {
