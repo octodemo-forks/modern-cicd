@@ -17,7 +17,7 @@ class ProductController {
 
     public function showProduct() {
         // Create a product instance (could be fetched from a database)
-        $product = new Product("Sample Product", "This is a great product!", 19.99);
+        $product = new Product("Sample Product", "This is a great product!", 18.99);
 
         // Render the product page
         echo $this->twig->render('product.html.twig', [
