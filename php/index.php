@@ -14,11 +14,11 @@ $counter = $registry->getOrRegisterCounter('php_app', 'requests_total', 'Total n
 $counter->incBy(1, ['200']); // Increment the counter for a 200 response code
 
 // Expose metrics at /metrics
-if ($_SERVER['REQUEST_URI'] == '/metrics') {
-    header('Content-Type: text/plain');
-    $renderer = new RenderTextFormat();
-    echo $renderer->render($registry->getMetricFamilySamples());
-    exit();
+if ($_SERVER['REQUEST_URI'] === '/metrics') {
+  $renderer = new RenderTextFormat();
+  $result = $renderer->render($registry->getMetricFamilySamples());
+  header('Content-Type: ' . RenderTextFormat::MIMETYPE);
+  echo $result;
 } else {
   // Create a ProductController instance
   $productController = new ProductController();
