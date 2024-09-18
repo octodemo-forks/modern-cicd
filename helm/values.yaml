@@ -7,7 +7,7 @@ replicaCount: 2
 image:
   repository: drstylex/sample-php-app
   pullPolicy: Always
-  tag: 1e6e6addf07475d012a1ce30c80d20b827b75a6a
+  tag: 5d3f8be8469724ea3ce92e5a2df1b5c1514f48bb
 
 imagePullSecrets: []
 nameOverride: ""
