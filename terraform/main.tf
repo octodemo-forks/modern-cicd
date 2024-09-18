@@ -103,3 +103,14 @@ resource "helm_release" "argocd" {
   create_namespace = true
   values           = [file("argocd-values.yml")]
 }
+
+resource "helm_release" "prometheus" {
+  name             = "prometheus"
+  namespace        = "monitoring"
+  create_namespace = true
+  chart            = "kube-prometheus-stack"
+  repository       = "https://prometheus-community.github.io/helm-charts"
+  version          = "62.7.0"
+
+  values = [file("prometheus-values.yml")]
+}
