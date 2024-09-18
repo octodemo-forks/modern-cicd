@@ -19,7 +19,7 @@ This is an automatically generated documentation for **Documentation**.
 |-------|-------------|
 | [`Attribute`](./classes/Attribute.md) | |
 | [`CURLStringFile`](./classes/CURLStringFile.md) | |
-| [`ComposerAutoloaderInit38054fe9cdb8714b287878e49d176aee`](./classes/ComposerAutoloaderInit38054fe9cdb8714b287878e49d176aee.md) | |
+| [`ComposerAutoloaderInit92bf6ab48e597be90a5371800319fe50`](./classes/ComposerAutoloaderInit92bf6ab48e597be90a5371800319fe50.md) | |
 | [`Normalizer`](./classes/Normalizer.md) | |
 | [`PhpToken`](./classes/PhpToken.md) | |
 | [`ReturnTypeWillChange`](./classes/ReturnTypeWillChange.md) | |
@@ -67,7 +67,7 @@ This is an automatically generated documentation for **Documentation**.
 | Class | Description |
 |-------|-------------|
 | [`ClassLoader`](./classes/Composer/Autoload/ClassLoader.md) | ClassLoader implements a PSR-0, PSR-4 and classmap class loader.|
-| [`ComposerStaticInit38054fe9cdb8714b287878e49d176aee`](./classes/Composer/Autoload/ComposerStaticInit38054fe9cdb8714b287878e49d176aee.md) | |
+| [`ComposerStaticInit92bf6ab48e597be90a5371800319fe50`](./classes/Composer/Autoload/ComposerStaticInit92bf6ab48e597be90a5371800319fe50.md) | |
 
 
 
@@ -295,6 +295,182 @@ This is an automatically generated documentation for **Documentation**.
 | [`AllowedViaMagicMethodSniff`](./classes/Fixtures/Sniffs/SetProperty/AllowedViaMagicMethodSniff.md) | |
 | [`AllowedViaStdClassSniff`](./classes/Fixtures/Sniffs/SetProperty/AllowedViaStdClassSniff.md) | |
 | [`NotAllowedViaAttributeSniff`](./classes/Fixtures/Sniffs/SetProperty/NotAllowedViaAttributeSniff.md) | |
+
+
+
+
+### \GuzzleHttp
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`Client`](./classes/GuzzleHttp/Client.md) | |
+| [`HandlerStack`](./classes/GuzzleHttp/HandlerStack.md) | Creates a composed Guzzle handler function by stacking middlewares on top of<br />an HTTP handler function.|
+| [`MessageFormatter`](./classes/GuzzleHttp/MessageFormatter.md) | Formats log messages using variable substitutions for requests, responses,<br />and other transactional data.|
+| [`Middleware`](./classes/GuzzleHttp/Middleware.md) | Functions used to create and wrap handlers with handler middleware.|
+| [`Pool`](./classes/GuzzleHttp/Pool.md) | Sends an iterator of requests concurrently using a capped pool size.|
+| [`PrepareBodyMiddleware`](./classes/GuzzleHttp/PrepareBodyMiddleware.md) | Prepares requests that contain a body, adding the Content-Length,<br />Content-Type, and Expect headers.|
+| [`RedirectMiddleware`](./classes/GuzzleHttp/RedirectMiddleware.md) | Request redirect middleware.|
+| [`RequestOptions`](./classes/GuzzleHttp/RequestOptions.md) | This class contains a list of built-in Guzzle request options.|
+| [`RetryMiddleware`](./classes/GuzzleHttp/RetryMiddleware.md) | Middleware that retries requests based on the boolean result of<br />invoking the provided &quot;decider&quot; function.|
+| [`TransferStats`](./classes/GuzzleHttp/TransferStats.md) | Represents data at the point after it was transferred either successfully<br />or after a network error.|
+| [`UriTemplate`](./classes/GuzzleHttp/UriTemplate.md) | Expands URI templates. Userland implementation of PECL uri_template.|
+| [`Utils`](./classes/GuzzleHttp/Utils.md) | |
+
+
+
+#### Interfaces
+
+| Interface | Description |
+|-----------|-------------|
+| [`ClientInterface`](./classes/GuzzleHttp/ClientInterface.md) | Client interface for sending HTTP requests.|
+
+
+
+### \GuzzleHttp\Cookie
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`CookieJar`](./classes/GuzzleHttp/Cookie/CookieJar.md) | Cookie jar that stores cookies as an array|
+| [`FileCookieJar`](./classes/GuzzleHttp/Cookie/FileCookieJar.md) | Persists non-session cookies using a JSON formatted file|
+| [`SessionCookieJar`](./classes/GuzzleHttp/Cookie/SessionCookieJar.md) | Persists cookies in the client session|
+| [`SetCookie`](./classes/GuzzleHttp/Cookie/SetCookie.md) | Set-Cookie object|
+
+
+
+#### Interfaces
+
+| Interface | Description |
+|-----------|-------------|
+| [`CookieJarInterface`](./classes/GuzzleHttp/Cookie/CookieJarInterface.md) | Stores HTTP cookies.|
+
+
+
+### \GuzzleHttp\Exception
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`BadResponseException`](./classes/GuzzleHttp/Exception/BadResponseException.md) | Exception when an HTTP error occurs (4xx or 5xx error)|
+| [`ClientException`](./classes/GuzzleHttp/Exception/ClientException.md) | Exception when a client error is encountered (4xx codes)|
+| [`ConnectException`](./classes/GuzzleHttp/Exception/ConnectException.md) | Exception thrown when a connection cannot be established.|
+| [`InvalidArgumentException`](./classes/GuzzleHttp/Exception/InvalidArgumentException.md) | |
+| [`RequestException`](./classes/GuzzleHttp/Exception/RequestException.md) | HTTP Request exception|
+| [`SeekException`](./classes/GuzzleHttp/Exception/SeekException.md) | Exception thrown when a seek fails on a stream.|
+| [`ServerException`](./classes/GuzzleHttp/Exception/ServerException.md) | Exception when a server error is encountered (5xx codes)|
+| [`TooManyRedirectsException`](./classes/GuzzleHttp/Exception/TooManyRedirectsException.md) | HTTP Request exception|
+| [`TransferException`](./classes/GuzzleHttp/Exception/TransferException.md) | |
+
+
+
+#### Interfaces
+
+| Interface | Description |
+|-----------|-------------|
+| [`GuzzleException`](./classes/GuzzleHttp/Exception/GuzzleException.md) | |
+
+
+
+### \GuzzleHttp\Handler
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`CurlFactory`](./classes/GuzzleHttp/Handler/CurlFactory.md) | Creates curl resources from a request|
+| [`CurlHandler`](./classes/GuzzleHttp/Handler/CurlHandler.md) | HTTP handler that uses cURL easy handles as a transport layer.|
+| [`CurlMultiHandler`](./classes/GuzzleHttp/Handler/CurlMultiHandler.md) | Returns an asynchronous response using curl_multi_* functions.|
+| [`MockHandler`](./classes/GuzzleHttp/Handler/MockHandler.md) | Handler that returns responses or throw exceptions from a queue.|
+| [`Proxy`](./classes/GuzzleHttp/Handler/Proxy.md) | Provides basic proxies for handlers.|
+| [`StreamHandler`](./classes/GuzzleHttp/Handler/StreamHandler.md) | HTTP handler that uses PHP&#039;s HTTP stream wrapper.|
+
+
+
+#### Interfaces
+
+| Interface | Description |
+|-----------|-------------|
+| [`CurlFactoryInterface`](./classes/GuzzleHttp/Handler/CurlFactoryInterface.md) | |
+
+
+
+### \GuzzleHttp\Promise
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`AggregateException`](./classes/GuzzleHttp/Promise/AggregateException.md) | Exception thrown when too many errors occur in the some() or any() methods.|
+| [`CancellationException`](./classes/GuzzleHttp/Promise/CancellationException.md) | Exception that is set as the reason for a promise that has been cancelled.|
+| [`Coroutine`](./classes/GuzzleHttp/Promise/Coroutine.md) | Creates a promise that is resolved using a generator that yields values or<br />promises (somewhat similar to C#&#039;s async keyword).|
+| [`Create`](./classes/GuzzleHttp/Promise/Create.md) | |
+| [`Each`](./classes/GuzzleHttp/Promise/Each.md) | |
+| [`EachPromise`](./classes/GuzzleHttp/Promise/EachPromise.md) | Represents a promise that iterates over many promises and invokes<br />side-effect functions in the process.|
+| [`FulfilledPromise`](./classes/GuzzleHttp/Promise/FulfilledPromise.md) | A promise that has been fulfilled.|
+| [`Is`](./classes/GuzzleHttp/Promise/Is.md) | |
+| [`Promise`](./classes/GuzzleHttp/Promise/Promise.md) | Promises/A+ implementation that avoids recursion when possible.|
+| [`RejectedPromise`](./classes/GuzzleHttp/Promise/RejectedPromise.md) | A promise that has been rejected.|
+| [`RejectionException`](./classes/GuzzleHttp/Promise/RejectionException.md) | A special exception that is thrown when waiting on a rejected promise.|
+| [`TaskQueue`](./classes/GuzzleHttp/Promise/TaskQueue.md) | A task queue that executes tasks in a FIFO order.|
+| [`Utils`](./classes/GuzzleHttp/Promise/Utils.md) | |
+
+
+
+#### Interfaces
+
+| Interface | Description |
+|-----------|-------------|
+| [`PromiseInterface`](./classes/GuzzleHttp/Promise/PromiseInterface.md) | A promise represents the eventual result of an asynchronous operation.|
+| [`PromisorInterface`](./classes/GuzzleHttp/Promise/PromisorInterface.md) | Interface used with classes that return a promise.|
+| [`TaskQueueInterface`](./classes/GuzzleHttp/Promise/TaskQueueInterface.md) | |
+
+
+
+### \GuzzleHttp\Psr7
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`AppendStream`](./classes/GuzzleHttp/Psr7/AppendStream.md) | Reads from multiple streams, one after the other.|
+| [`BufferStream`](./classes/GuzzleHttp/Psr7/BufferStream.md) | Provides a buffer stream that can be written to to fill a buffer, and read<br />from to remove bytes from the buffer.|
+| [`CachingStream`](./classes/GuzzleHttp/Psr7/CachingStream.md) | Stream decorator that can cache previously read bytes from a sequentially<br />read stream.|
+| [`DroppingStream`](./classes/GuzzleHttp/Psr7/DroppingStream.md) | Stream decorator that begins dropping data once the size of the underlying<br />stream becomes too full.|
+| [`FnStream`](./classes/GuzzleHttp/Psr7/FnStream.md) | Compose stream implementations based on a hash of functions.|
+| [`Header`](./classes/GuzzleHttp/Psr7/Header.md) | |
+| [`InflateStream`](./classes/GuzzleHttp/Psr7/InflateStream.md) | Uses PHP&#039;s zlib.inflate filter to inflate deflate or gzipped content.|
+| [`LazyOpenStream`](./classes/GuzzleHttp/Psr7/LazyOpenStream.md) | Lazily reads or writes to a file that is opened only after an IO operation<br />take place on the stream.|
+| [`LimitStream`](./classes/GuzzleHttp/Psr7/LimitStream.md) | Decorator used to return only a subset of a stream.|
+| [`Message`](./classes/GuzzleHttp/Psr7/Message.md) | |
+| [`MimeType`](./classes/GuzzleHttp/Psr7/MimeType.md) | |
+| [`MultipartStream`](./classes/GuzzleHttp/Psr7/MultipartStream.md) | Stream that when read returns bytes for a streaming multipart or<br />multipart/form-data stream.|
+| [`NoSeekStream`](./classes/GuzzleHttp/Psr7/NoSeekStream.md) | Stream decorator that prevents a stream from being seeked.|
+| [`PumpStream`](./classes/GuzzleHttp/Psr7/PumpStream.md) | Provides a read only stream that pumps data from a PHP callable.|
+| [`Query`](./classes/GuzzleHttp/Psr7/Query.md) | |
+| [`Request`](./classes/GuzzleHttp/Psr7/Request.md) | PSR-7 request implementation.|
+| [`Response`](./classes/GuzzleHttp/Psr7/Response.md) | PSR-7 response implementation.|
+| [`Rfc7230`](./classes/GuzzleHttp/Psr7/Rfc7230.md) | |
+| [`ServerRequest`](./classes/GuzzleHttp/Psr7/ServerRequest.md) | Server-side HTTP request|
+| [`Stream`](./classes/GuzzleHttp/Psr7/Stream.md) | PHP stream implementation.|
+| [`StreamWrapper`](./classes/GuzzleHttp/Psr7/StreamWrapper.md) | Converts Guzzle streams into PHP stream resources.|
+| [`UploadedFile`](./classes/GuzzleHttp/Psr7/UploadedFile.md) | |
+| [`Uri`](./classes/GuzzleHttp/Psr7/Uri.md) | PSR-7 URI implementation.|
+| [`UriComparator`](./classes/GuzzleHttp/Psr7/UriComparator.md) | Provides methods to determine if a modified URL should be considered cross-origin.|
+| [`UriNormalizer`](./classes/GuzzleHttp/Psr7/UriNormalizer.md) | Provides methods to normalize and compare URIs.|
+| [`UriResolver`](./classes/GuzzleHttp/Psr7/UriResolver.md) | Resolves a URI reference in the context of a base URI and the opposite way.|
+| [`Utils`](./classes/GuzzleHttp/Psr7/Utils.md) | |
+
+
+#### Traits
+
+| Trait | Description |
+|-------|-------------|
+| [`MessageTrait`](./classes/GuzzleHttp/Psr7/MessageTrait.md) | Trait implementing functionality common to requests and responses.|
+| [`StreamDecoratorTrait`](./classes/GuzzleHttp/Psr7/StreamDecoratorTrait.md) | Stream decorator trait|
 
 
 
@@ -3553,6 +3729,59 @@ This is an automatically generated documentation for **Documentation**.
 
 
 
+### \Prometheus
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`Collector`](./classes/Prometheus/Collector.md) | |
+| [`CollectorRegistry`](./classes/Prometheus/CollectorRegistry.md) | |
+| [`Counter`](./classes/Prometheus/Counter.md) | |
+| [`Gauge`](./classes/Prometheus/Gauge.md) | |
+| [`Histogram`](./classes/Prometheus/Histogram.md) | |
+| [`MetricFamilySamples`](./classes/Prometheus/MetricFamilySamples.md) | |
+| [`PushGateway`](./classes/Prometheus/PushGateway.md) | |
+| [`RenderTextFormat`](./classes/Prometheus/RenderTextFormat.md) | |
+| [`Sample`](./classes/Prometheus/Sample.md) | |
+
+
+
+
+### \Prometheus\Exception
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`MetricNotFoundException`](./classes/Prometheus/Exception/MetricNotFoundException.md) | Exception thrown if a metric can&#039;t be found in the CollectorRegistry.|
+| [`MetricsRegistrationException`](./classes/Prometheus/Exception/MetricsRegistrationException.md) | Exception thrown if an error occurs during metrics registration.|
+| [`StorageException`](./classes/Prometheus/Exception/StorageException.md) | Exception thrown if an error occurs during metrics storage.|
+
+
+
+
+### \Prometheus\Storage
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`APC`](./classes/Prometheus/Storage/APC.md) | |
+| [`InMemory`](./classes/Prometheus/Storage/InMemory.md) | |
+| [`Redis`](./classes/Prometheus/Storage/Redis.md) | |
+| [`RedisTest`](./classes/Prometheus/Storage/RedisTest.md) | |
+
+
+
+#### Interfaces
+
+| Interface | Description |
+|-----------|-------------|
+| [`Adapter`](./classes/Prometheus/Storage/Adapter.md) | |
+
+
+
 ### \Psr\Container
 
 
@@ -3580,6 +3809,25 @@ This is an automatically generated documentation for **Documentation**.
 | [`EventDispatcherInterface`](./classes/Psr/EventDispatcher/EventDispatcherInterface.md) | Defines a dispatcher for events.|
 | [`ListenerProviderInterface`](./classes/Psr/EventDispatcher/ListenerProviderInterface.md) | Mapper from an event to the listeners that are applicable to that event.|
 | [`StoppableEventInterface`](./classes/Psr/EventDispatcher/StoppableEventInterface.md) | An Event whose processing may be interrupted when the event has been handled.|
+
+
+
+### \Psr\Http\Message
+
+
+
+
+#### Interfaces
+
+| Interface | Description |
+|-----------|-------------|
+| [`MessageInterface`](./classes/Psr/Http/Message/MessageInterface.md) | HTTP messages consist of requests from a client to a server and responses<br />from a server to a client. This interface defines the methods common to<br />each.|
+| [`RequestInterface`](./classes/Psr/Http/Message/RequestInterface.md) | Representation of an outgoing, client-side request.|
+| [`ResponseInterface`](./classes/Psr/Http/Message/ResponseInterface.md) | Representation of an outgoing, server-side response.|
+| [`ServerRequestInterface`](./classes/Psr/Http/Message/ServerRequestInterface.md) | Representation of an incoming, server-side HTTP request.|
+| [`StreamInterface`](./classes/Psr/Http/Message/StreamInterface.md) | Describes a data stream.|
+| [`UploadedFileInterface`](./classes/Psr/Http/Message/UploadedFileInterface.md) | Value object representing a file uploaded through an HTTP request.|
+| [`UriInterface`](./classes/Psr/Http/Message/UriInterface.md) | Value object representing a URI.|
 
 
 
@@ -4742,6 +4990,74 @@ This is an automatically generated documentation for **Documentation**.
 |-------|-------------|
 | [`ServiceLocatorTest`](./classes/Symfony/Contracts/Service/Test/ServiceLocatorTest.md) | |
 | [`ServiceLocatorTestCase`](./classes/Symfony/Contracts/Service/Test/ServiceLocatorTestCase.md) | |
+
+
+
+
+### \Test
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`BlackBoxPushGatewayTest`](./classes/Test/BlackBoxPushGatewayTest.md) | |
+| [`BlackBoxTest`](./classes/Test/BlackBoxTest.md) | |
+
+
+
+
+### \Test\Prometheus
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`AbstractCollectorRegistryTest`](./classes/Test/Prometheus/AbstractCollectorRegistryTest.md) | |
+| [`AbstractCounterTest`](./classes/Test/Prometheus/AbstractCounterTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+| [`AbstractGaugeTest`](./classes/Test/Prometheus/AbstractGaugeTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+| [`AbstractHistogramTest`](./classes/Test/Prometheus/AbstractHistogramTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+
+
+
+
+### \Test\Prometheus\APC
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`CollectorRegistryTest`](./classes/Test/Prometheus/APC/CollectorRegistryTest.md) | |
+| [`CounterTest`](./classes/Test/Prometheus/APC/CounterTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+| [`GaugeTest`](./classes/Test/Prometheus/APC/GaugeTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+| [`HistogramTest`](./classes/Test/Prometheus/APC/HistogramTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+
+
+
+
+### \Test\Prometheus\InMemory
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`CollectorRegistryTest`](./classes/Test/Prometheus/InMemory/CollectorRegistryTest.md) | |
+| [`CounterTest`](./classes/Test/Prometheus/InMemory/CounterTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+| [`GaugeTest`](./classes/Test/Prometheus/InMemory/GaugeTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+| [`HistogramTest`](./classes/Test/Prometheus/InMemory/HistogramTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+
+
+
+
+### \Test\Prometheus\Redis
+
+#### Classes
+
+| Class | Description |
+|-------|-------------|
+| [`CollectorRegistryTest`](./classes/Test/Prometheus/Redis/CollectorRegistryTest.md) | |
+| [`CounterTest`](./classes/Test/Prometheus/Redis/CounterTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+| [`GaugeTest`](./classes/Test/Prometheus/Redis/GaugeTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
+| [`HistogramTest`](./classes/Test/Prometheus/Redis/HistogramTest.md) | See https://prometheus.io/docs/instrumenting/exposition_formats/|
 
 
 
