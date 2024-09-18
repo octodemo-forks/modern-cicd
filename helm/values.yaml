@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: drstylex/sample-php-app
+  repository: sample-php-app:f2d052a3df2f7f31da83fb59f44109dbd7cf65cf
   pullPolicy: Always
   tag: "latest"
 
