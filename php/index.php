@@ -5,6 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Prometheus\CollectorRegistry;
 use Prometheus\Storage\InMemory;
 use Prometheus\RenderTextFormat;
+use Storefront\Controllers\ProductController;
 
 $registry = new CollectorRegistry(new InMemory());
 
@@ -18,10 +19,8 @@ if ($_SERVER['REQUEST_URI'] == '/metrics') {
     $renderer = new RenderTextFormat();
     echo $renderer->render($registry->getMetricFamilySamples());
     exit();
+} else {
+  // Create a ProductController instance
+  $productController = new ProductController();
+  $productController->showProduct();
 }
-
-use Storefront\Controllers\ProductController;
-
-// Create a ProductController instance
-$productController = new ProductController();
-$productController->showProduct();
