@@ -46,6 +46,7 @@ jobs:
           if [ "$(git diff --exit-code README.md)" ]; then
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git pull origin main
             git add README.md
             git commit -m "Update README with latest documentation"
             git push origin main
@@ -88,6 +89,7 @@ jobs:
           if [ "$(git diff --exit-code helm/README.md)" ]; then
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git pull origin main
             git add helm/README.md
             git commit -m "Update Helm chart README [skip ci]" || echo "No changes to commit"
             git push origin main
