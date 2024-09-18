@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker image
-        run: docker buildx build --platform linux/amd64 -t ${{ vars.DOCKER_USERNAME }}/sample-php-app:latest --push .
+        run: docker buildx build --platform linux/amd64 -t ${{ vars.DOCKER_USERNAME }}/sample-php-app:${{ github.sha }} --push .
 
       - name: Setup kubectl
         uses: azure/setup-kubectl@v4
@@ -45,3 +45,19 @@ jobs:
 
       - name: Install App
         run: kubectl apply -f argo/php.yaml
+
+      - name: Get ArgoCD Server
+        id: server
+        run: |
+          echo argocd-server=$(kubectl get svc argocd-server -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].hostname}') >> $GITHUB_OUTPUT
+          echo argocd-password=$(kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d) >> $GITHUB_OUTPUT
+
+      - name: Install ArgoCD CLI
+        run: |
+          curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+          chmod +x /usr/local/bin/argocd
+
+      - name: Sync application with ArgoCD
+        run: |
+          argocd login ${{ steps.server.outputs.argocd-server }} --username admin --password ${{ steps.server.outputs.argocd-password }} --insecure
+          argocd app sync sample-php-app
