@@ -7,7 +7,7 @@ replicaCount: 2
 image:
   repository: sample-php-app
   pullPolicy: Always
-  tag: sample-php-app:04913d16f2a577a1f6d9ac8f1a2fed4981444950
+  tag: d47218140143e428d9ebff8655bc2a346408efdf
 
 imagePullSecrets: []
 nameOverride: ""
