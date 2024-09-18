@@ -46,6 +46,38 @@ jobs:
       - name: Install App
         run: kubectl apply -f argo/php.yaml
 
+  update-helm-chart:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Update Helm chart with the new Docker image tag
+      - name: Update Helm chart
+        run: |
+          IMAGE_NAME="sample-php-app"
+          GITHUB_SHA=${{ github.sha }}
+          sed -i "s|repository:.*|repository: $IMAGE_NAME:$GITHUB_SHA|g" ./helm/values.yaml
+
+      # Step 3: Commit and push updated Helm chart
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add ./helm/values.yaml
+          git commit -m "Update Helm chart with Docker image $GITHUB_SHA" || echo "No changes to commit"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  trigger-argocd-sync:
+    runs-on: ubuntu-latest
+    needs: update-helm-chart
+
+    steps:
       - name: Get ArgoCD Server
         id: server
         run: |
