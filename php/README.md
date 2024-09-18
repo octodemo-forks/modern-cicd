@@ -2567,6 +2567,8 @@ This is an automatically generated documentation for **Documentation**.
 | [`EnumCaseTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/PHP/EnumCaseTest.md) | |
 | [`FinallyTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/PHP/FinallyTest.md) | |
 | [`GotoLabelTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/PHP/GotoLabelTest.md) | |
+| [`HeredocNowdocTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/PHP/HeredocNowdocTest.md) | Tests the tokenization for heredoc/nowdoc constructs.|
+| [`HeredocParseErrorTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/PHP/HeredocParseErrorTest.md) | Tests the tokenization for an unclosed heredoc construct.|
 | [`HeredocStringTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/PHP/HeredocStringTest.md) | |
 | [`NamedFunctionCallArgumentsTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/PHP/NamedFunctionCallArgumentsTest.md) | |
 | [`NullsafeObjectOperatorTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/PHP/NullsafeObjectOperatorTest.md) | |
@@ -2591,6 +2593,7 @@ This is an automatically generated documentation for **Documentation**.
 | [`CreateParenthesisNestingMapDNFTypesTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/Tokenizer/CreateParenthesisNestingMapDNFTypesTest.md) | |
 | [`CreateTokenMapArrayParenthesesTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/Tokenizer/CreateTokenMapArrayParenthesesTest.md) | |
 | [`HeredocNowdocCloserTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/Tokenizer/HeredocNowdocCloserTest.md) | Heredoc/nowdoc closer token test.|
+| [`HeredocNowdocOpenerTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/Tokenizer/HeredocNowdocOpenerTest.md) | Heredoc/nowdoc opener token test.|
 | [`RecurseScopeMapCaseKeywordConditionsTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/Tokenizer/RecurseScopeMapCaseKeywordConditionsTest.md) | |
 | [`RecurseScopeMapDefaultKeywordConditionsTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/Tokenizer/RecurseScopeMapDefaultKeywordConditionsTest.md) | |
 | [`ScopeSettingWithNamespaceOperatorTest`](./classes/PHP_CodeSniffer/Tests/Core/Tokenizer/Tokenizer/ScopeSettingWithNamespaceOperatorTest.md) | |
@@ -5200,4 +5203,4 @@ This is an automatically generated documentation for **Documentation**.
 
 
 ***
-> Automatically generated on 2024-09-17
+> Automatically generated on 2024-09-18
