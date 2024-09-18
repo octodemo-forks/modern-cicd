@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker image
-        run: docker buildx build --platform linux/amd64 -t ${{ vars.DOCKER_USERNAME }}/sample-php-app:${{ github.sha }} --push .
+        run: docker buildx build --platform linux/amd64 -t ${{ vars.DOCKER_USERNAME }}/sample-php-app:${{ github.sha }} ${{ vars.DOCKER_USERNAME }}/sample-php-app:latest --push .
 
       - name: Setup kubectl
         uses: azure/setup-kubectl@v4
