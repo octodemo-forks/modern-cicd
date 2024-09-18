@@ -6,8 +6,7 @@ metadata:
     {{- include "php.labels" . | nindent 4 }}
 spec:
   selector:
-    matchLabels:
-      {{- include "php.selectorLabels" . | nindent 4 }}
+    {{- include "php.selectorLabels" . | nindent 4 }}
   endpoints:
   - port: "{{ .Values.service.port }}"
     path: /metrics
