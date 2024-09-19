@@ -22,7 +22,7 @@ A Helm chart for Kubernetes deployment of the PHP app
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"drstylex/sample-php-app"` |  |
-| image.tag | string | `"7b27f4d24b430dd70a85a825cdedeb59d784f1d1"` |  |
+| image.tag | string | `"a51ada49995cda5352312a391132e088d9e1d59c"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
