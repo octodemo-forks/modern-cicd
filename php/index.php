@@ -34,11 +34,6 @@ $start = microtime(true);
 try {
     // Simulating session increment
     $activeSessionsGauge->inc();
-    
-    // Simulate application logic...
-    if ($someErrorCondition) {
-        throw new Exception('Error occurred!');
-    }
 
     // Set memory usage
     $memoryUsageGauge->set(memory_get_usage());
