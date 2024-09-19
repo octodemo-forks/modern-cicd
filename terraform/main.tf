@@ -28,6 +28,10 @@ module "eks" {
 
       subnet_ids = aws_subnet.private_subnet[*].id
 
+      iam_role_additional_policies = {
+        AmazonEKS_EBS_CSI_DriverRole = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+      }
+
       min_size     = 1
       max_size     = 3
       desired_size = 2
@@ -55,7 +59,6 @@ module "lb_role" {
 
   role_name                              = "${module.eks.cluster_name}_eks_lb"
   attach_load_balancer_controller_policy = true
-  attach_ebs_csi_policy                  = true
 
   oidc_providers = {
     main = {
