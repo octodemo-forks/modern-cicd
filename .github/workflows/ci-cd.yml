@@ -9,6 +9,8 @@ on:
       - php/**
       - argo/**
       - .github/workflows/ci-cd.yml
+      - Dockerfile
+      - 000-default.conf
 
 permissions:
   contents: write
