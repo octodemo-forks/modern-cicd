@@ -4,6 +4,12 @@
 
 A Helm chart for Kubernetes deployment of the PHP app
 
+## Requirements
+
+| Repository | Name | Version |
+|------------|------|---------|
+| https://charts.bitnami.com/bitnami | redis | 20.1.3 |
+
 ## Values
 
 | Key | Type | Default | Description |
@@ -32,6 +38,9 @@ A Helm chart for Kubernetes deployment of the PHP app
 | podSecurityContext | object | `{}` |  |
 | readinessProbe.httpGet.path | string | `"/"` |  |
 | readinessProbe.httpGet.port | string | `"http"` |  |
+| redis.architecture | string | `"standalone"` |  |
+| redis.auth.enabled | bool | `false` |  |
+| redis.master.service.type | string | `"ClusterIP"` |  |
 | replicaCount | int | `2` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
