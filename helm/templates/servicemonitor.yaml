@@ -9,6 +9,6 @@ spec:
     matchLabels:
       {{- include "php.selectorLabels" . | nindent 6 }}
   endpoints:
-  - port: "{{ .Values.service.port }}"
+  - port: http
     path: /metrics
     interval: 30s
