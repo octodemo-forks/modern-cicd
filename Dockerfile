@@ -12,6 +12,7 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     unzip \
+    php-apcu \
     && docker-php-ext-install zip pdo_mysql \
     # Enable Apache mod_rewrite (for URL rewriting if needed)
     && a2enmod rewrite
