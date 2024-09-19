@@ -3,14 +3,23 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Prometheus\CollectorRegistry;
-use Prometheus\Storage\InMemory;
+// use Prometheus\Storage\InMemory;
+use Prometheus\Storage\Redis as PrometheusRedis;
 use Prometheus\RenderTextFormat;
 use Storefront\Controllers\ProductController;
 
 // $redis = new Redis();
 // $redis->connect('sample-php-app-redis-master', 6379); // Redis service from Helm
 
-$registry = new CollectorRegistry(new InMemory());
+// Configure Redis connection for Prometheus metrics
+$redisAdapter = new PrometheusRedis([
+  'host' => 'sample-php-app-redis-master',  // Use the Redis master service or IP address
+  'port' => 6379,  // Redis port
+]);
+
+// Initialize the registry with Redis storage
+$registry = new CollectorRegistry($redisAdapter);
+// $registry = new CollectorRegistry(new InMemory());
 
 // Initialize the counter if it doesn't exist
 // if (!$redis->exists('php_app_requests_total')) {
@@ -27,23 +36,14 @@ $activeSessionsGauge = $registry->getOrRegisterGauge('php_app', 'active_sessions
 // Increment the total requests counter
 $totalRequestsCounter->inc();
 
-// Measure request duration
-$start = microtime(true);
+// Measure request duration with a histogram
+$memoryUsageGauge->set(memory_get_usage());
+$startTime = microtime(true);
 
-// Simulate application logic
-try {
-    // Simulating session increment
-    $activeSessionsGauge->inc();
+// Your application logic here
 
-    // Set memory usage
-    $memoryUsageGauge->set(memory_get_usage());
-} catch (Exception $e) {
-    // Increment error counter on exception
-    $errorsCounter->inc();
-}
-
-$end = microtime(true);
-$requestDuration = $end - $start;
+$endTime = microtime(true);
+$requestDuration = $endTime - $startTime;
 $requestDurationHistogram->observe($requestDuration);
 
 // Increment the counter
