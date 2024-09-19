@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_URI'] === '/metrics') {
   exit();
 } else {
   $startTime = microtime(true);
-  
+
   // Create a ProductController instance
   $productController = new ProductController();
   $productController->showProduct();
