@@ -3,11 +3,11 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Prometheus\CollectorRegistry;
-use Prometheus\Storage\APC;
+use Prometheus\Storage\InMemory;
 use Prometheus\RenderTextFormat;
 use Storefront\Controllers\ProductController;
 
-$registry = new CollectorRegistry(new APC());
+$registry = new CollectorRegistry(new InMemory());
 
 // Define some metrics (e.g., request count)
 $counter = $registry->getOrRegisterCounter('php_app', 'requests_total', 'Total number of requests', ['status']);

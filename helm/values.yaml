@@ -105,3 +105,11 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+redis:
+  architecture: standalone
+  auth:
+    enabled: false # Disable Redis password for simplicity (enable in production for security)
+  master:
+    service:
+      type: ClusterIP
