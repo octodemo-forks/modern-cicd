@@ -6,55 +6,56 @@ A Helm chart for Kubernetes deployment of the PHP app
 
 ## Requirements
 
-| Repository                         | Name  | Version |
-| ---------------------------------- | ----- | ------- |
-| https://charts.bitnami.com/bitnami | redis | 20.1.3  |
+| Repository | Name | Version |
+|------------|------|---------|
+| https://charts.bitnami.com/bitnami | redis | 20.1.3 |
 
 ## Values
 
-| Key                                                                                | Type   | Default                                      | Description |
-| ---------------------------------------------------------------------------------- | ------ | -------------------------------------------- | ----------- |
-| affinity                                                                           | object | `{}`                                         |             |
-| autoscaling.enabled                                                                | bool   | `false`                                      |             |
-| autoscaling.maxReplicas                                                            | int    | `100`                                        |             |
-| autoscaling.minReplicas                                                            | int    | `1`                                          |             |
-| autoscaling.targetCPUUtilizationPercentage                                         | int    | `80`                                         |             |
-| fullnameOverride                                                                   | string | `""`                                         |             |
-| image.pullPolicy                                                                   | string | `"Always"`                                   |             |
-| image.repository                                                                   | string | `"drstylex/sample-php-app"`                  |             |
-| image.tag                                                                          | string | `"ac3c7be8da8480e1ea41ec05bc09dd048c483b4c"` |             |
-| imagePullSecrets                                                                   | list   | `[]`                                         |             |
-| ingress.annotations                                                                | object | `{}`                                         |             |
-| ingress.className                                                                  | string | `""`                                         |             |
-| ingress.enabled                                                                    | bool   | `false`                                      |             |
-| ingress.hosts[0].paths[0].path                                                     | string | `"/"`                                        |             |
-| ingress.hosts[0].paths[0].pathType                                                 | string | `"Prefix"`                                   |             |
-| livenessProbe.httpGet.path                                                         | string | `"/"`                                        |             |
-| livenessProbe.httpGet.port                                                         | string | `"http"`                                     |             |
-| nameOverride                                                                       | string | `""`                                         |             |
-| nodeSelector                                                                       | object | `{}`                                         |             |
-| podAnnotations                                                                     | object | `{}`                                         |             |
-| podLabels                                                                          | object | `{}`                                         |             |
-| podSecurityContext                                                                 | object | `{}`                                         |             |
-| readinessProbe.httpGet.path                                                        | string | `"/"`                                        |             |
-| readinessProbe.httpGet.port                                                        | string | `"http"`                                     |             |
-| redis.architecture                                                                 | string | `"standalone"`                               |             |
-| redis.auth.enabled                                                                 | bool   | `false`                                      |             |
-| redis.global.defaultStorageClass                                                   | string | `"ebs-sc"`                                   |             |
-| redis.master.service.type                                                          | string | `"ClusterIP"`                                |             |
-| replicaCount                                                                       | int    | `2`                                          |             |
-| resources                                                                          | object | `{}`                                         |             |
-| securityContext                                                                    | object | `{}`                                         |             |
-| service.annotations."service.beta.kubernetes.io/aws-load-balancer-attributes"      | string | `"load_balancing.cross_zone.enabled=true"`   |             |
-| service.annotations."service.beta.kubernetes.io/aws-load-balancer-nlb-target-type" | string | `"instance"`                                 |             |
-| service.annotations."service.beta.kubernetes.io/aws-load-balancer-scheme"          | string | `"internet-facing"`                          |             |
-| service.annotations."service.beta.kubernetes.io/aws-load-balancer-type"            | string | `"nlb"`                                      |             |
-| service.port                                                                       | int    | `80`                                         |             |
-| service.type                                                                       | string | `"LoadBalancer"`                             |             |
-| serviceAccount.annotations                                                         | object | `{}`                                         |             |
-| serviceAccount.automount                                                           | bool   | `true`                                       |             |
-| serviceAccount.create                                                              | bool   | `true`                                       |             |
-| serviceAccount.name                                                                | string | `""`                                         |             |
-| tolerations                                                                        | list   | `[]`                                         |             |
-| volumeMounts                                                                       | list   | `[]`                                         |             |
-| volumes                                                                            | list   | `[]`                                         |             |
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| affinity | object | `{}` |  |
+| autoscaling.enabled | bool | `false` |  |
+| autoscaling.maxReplicas | int | `100` |  |
+| autoscaling.minReplicas | int | `1` |  |
+| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| fullnameOverride | string | `""` |  |
+| image.pullPolicy | string | `"Always"` |  |
+| image.repository | string | `"drstylex/sample-php-app"` |  |
+| image.tag | string | `"c0ebcc2f3bba7c8485a5639abe05ce75846561a1"` |  |
+| imagePullSecrets | list | `[]` |  |
+| ingress.annotations | object | `{}` |  |
+| ingress.className | string | `""` |  |
+| ingress.enabled | bool | `false` |  |
+| ingress.hosts[0].paths[0].path | string | `"/"` |  |
+| ingress.hosts[0].paths[0].pathType | string | `"Prefix"` |  |
+| livenessProbe.httpGet.path | string | `"/"` |  |
+| livenessProbe.httpGet.port | string | `"http"` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
+| podAnnotations | object | `{}` |  |
+| podLabels | object | `{}` |  |
+| podSecurityContext | object | `{}` |  |
+| readinessProbe.httpGet.path | string | `"/"` |  |
+| readinessProbe.httpGet.port | string | `"http"` |  |
+| redis.architecture | string | `"standalone"` |  |
+| redis.auth.enabled | bool | `false` |  |
+| redis.global.defaultStorageClass | string | `"ebs-sc"` |  |
+| redis.master.service.type | string | `"ClusterIP"` |  |
+| replicaCount | int | `2` |  |
+| resources | object | `{}` |  |
+| securityContext | object | `{}` |  |
+| service.annotations."service.beta.kubernetes.io/aws-load-balancer-attributes" | string | `"load_balancing.cross_zone.enabled=true"` |  |
+| service.annotations."service.beta.kubernetes.io/aws-load-balancer-nlb-target-type" | string | `"instance"` |  |
+| service.annotations."service.beta.kubernetes.io/aws-load-balancer-scheme" | string | `"internet-facing"` |  |
+| service.annotations."service.beta.kubernetes.io/aws-load-balancer-type" | string | `"nlb"` |  |
+| service.port | int | `80` |  |
+| service.type | string | `"LoadBalancer"` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.automount | bool | `true` |  |
+| serviceAccount.create | bool | `true` |  |
+| serviceAccount.name | string | `""` |  |
+| tolerations | list | `[]` |  |
+| volumeMounts | list | `[]` |  |
+| volumes | list | `[]` |  |
+
