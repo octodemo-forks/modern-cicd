@@ -113,3 +113,7 @@ redis:
   master:
     service:
       type: ClusterIP
+    persistence:
+      enabled: true # Enable persistence
+      storageClass: ebs-sc # Use the EBS CSI StorageClass
+      size: 5Gi # Adjust the size of the volume
