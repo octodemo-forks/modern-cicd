@@ -17,7 +17,7 @@ $counter->incBy(1, ['200']); // Increment the counter for a 200 response code
 if ($_SERVER['REQUEST_URI'] === '/metrics') {
   $renderer = new RenderTextFormat();
   $result = $renderer->render($registry->getMetricFamilySamples());
-  header('Content-Type: ' . RenderTextFormat::MIMETYPE);
+  header('Content-Type: ' . RenderTextFormat::MIME_TYPE);
   echo $result;
 } else {
   // Create a ProductController instance
