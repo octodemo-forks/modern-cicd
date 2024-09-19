@@ -18,6 +18,7 @@ module "eks" {
     eks-pod-identity-agent = {}
     kube-proxy             = {}
     vpc-cni                = {}
+    aws-ebs-csi-driver     = {}
   }
 
   eks_managed_node_groups = {
@@ -54,6 +55,7 @@ module "lb_role" {
 
   role_name                              = "${module.eks.cluster_name}_eks_lb"
   attach_load_balancer_controller_policy = true
+  attach_ebs_csi_policy                  = true
 
   oidc_providers = {
     main = {
