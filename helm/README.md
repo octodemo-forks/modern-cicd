@@ -22,7 +22,7 @@ A Helm chart for Kubernetes deployment of the PHP app
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"drstylex/sample-php-app"` |  |
-| image.tag | string | `"2bcca75a3d600c5d6b4c7407c29ff31ad3cec833"` |  |
+| image.tag | string | `"f651261fd2beed912b0b30535afd296fafd917c0"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
@@ -40,9 +40,7 @@ A Helm chart for Kubernetes deployment of the PHP app
 | readinessProbe.httpGet.port | string | `"http"` |  |
 | redis.architecture | string | `"standalone"` |  |
 | redis.auth.enabled | bool | `false` |  |
-| redis.master.persistence.enabled | bool | `true` |  |
-| redis.master.persistence.size | string | `"5Gi"` |  |
-| redis.master.persistence.storageClass | string | `"ebs-sc"` |  |
+| redis.global.defaultStorageClass | string | `"ebs-sc"` |  |
 | redis.master.service.type | string | `"ClusterIP"` |  |
 | replicaCount | int | `2` |  |
 | resources | object | `{}` |  |
