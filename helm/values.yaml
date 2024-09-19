@@ -108,12 +108,10 @@ affinity: {}
 
 redis:
   architecture: standalone
+  global:
+    defaultStorageClass: ebs-sc
   auth:
     enabled: false # Disable Redis password for simplicity (enable in production for security)
   master:
     service:
       type: ClusterIP
-    persistence:
-      enabled: true # Enable persistence
-      storageClass: ebs-sc # Use the EBS CSI StorageClass
-      size: 5Gi # Adjust the size of the volume
