@@ -8,7 +8,7 @@ use Prometheus\RenderTextFormat;
 use Storefront\Controllers\ProductController;
 
 $redis = new Redis();
-$redis->connect('redis-master', 6379); // Redis service from Helm
+$redis->connect('sample-php-app-redis-master', 6379); // Redis service from Helm
 
 // Initialize the counter if it doesn't exist
 if (!$redis->exists('php_app_requests_total')) {
