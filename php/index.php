@@ -32,18 +32,18 @@ $memoryUsageGauge->set(memory_get_usage());
 
 // Expose metrics at /metrics
 if ($_SERVER['REQUEST_URI'] === '/metrics') {
-  $renderer = new RenderTextFormat();
-  header('Content-Type: ' . RenderTextFormat::MIME_TYPE);
-  echo $renderer->render($registry->getMetricFamilySamples());
-  exit();
+    $renderer = new RenderTextFormat();
+    header('Content-Type: ' . RenderTextFormat::MIME_TYPE);
+    echo $renderer->render($registry->getMetricFamilySamples());
+    exit();
 } else {
-  $startTime = microtime(true);
+    $startTime = microtime(true);
 
-  // Create a ProductController instance
-  $productController = new ProductController();
-  $productController->showProduct();
+    // Create a ProductController instance
+    $productController = new ProductController();
+    $productController->showProduct();
 
-  $endTime = microtime(true);
-  $requestDuration = $endTime - $startTime;
-  $requestDurationHistogram->observe($requestDuration);
+    $endTime = microtime(true);
+    $requestDuration = $endTime - $startTime;
+    $requestDurationHistogram->observe($requestDuration);
 }

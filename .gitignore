@@ -51,6 +51,7 @@ php/vendor
 composer.lock
 php/docs
 php/.phpdoc
+.php-cs-fixer.cache
 
 # mac
 .DS_Store
