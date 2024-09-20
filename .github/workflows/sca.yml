@@ -49,6 +49,7 @@ jobs:
           image-ref: sample-php-app:latest
           format: sarif
           output: trivy.sarif
+          severity: CRITICAL,HIGH
 
       # Upload Trivy SARIF file to GitHub Code Scanning
       - name: Upload Trivy SARIF to GitHub
@@ -72,6 +73,7 @@ jobs:
           scan-ref: ./helm
           format: sarif
           output: helm.sarif
+          severity: CRITICAL,HIGH
 
       # Upload Helm Lint SARIF to GitHub Code Scanning
       - name: Upload Helm Lint SARIF to GitHub
@@ -95,6 +97,7 @@ jobs:
           scan-ref: ./terraform
           format: sarif
           output: terraform.sarif
+          severity: CRITICAL,HIGH
 
       # Upload terraform scanning SARIF to GitHub Code Scanning
       - name: Upload terraform SARIF to GitHub
