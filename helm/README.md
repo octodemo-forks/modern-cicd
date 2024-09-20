@@ -1,14 +1,14 @@
 # php
 
-![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
+![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
 
 A Helm chart for Kubernetes deployment of the PHP app
 
 ## Requirements
 
-| Repository                         | Name  | Version |
-| ---------------------------------- | ----- | ------- |
-| https://charts.bitnami.com/bitnami | redis | 20.1.3  |
+| Repository | Name | Version |
+|------------|------|---------|
+| https://charts.bitnami.com/bitnami | redis | 20.1.3 |
 
 ## Values
 
@@ -22,7 +22,7 @@ A Helm chart for Kubernetes deployment of the PHP app
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"drstylex/sample-php-app"` |  |
-| image.tag | string | `"1.1.0"` |  |
+| image.tag | string | `"1.2.0"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
