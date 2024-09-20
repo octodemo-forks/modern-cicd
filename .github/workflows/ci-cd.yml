@@ -76,7 +76,7 @@ jobs:
         run: helm package helm
 
       - name: Push Helm Chart to GitHub Packages
-        run: helm push sample-php-app-${{ needs.build-container.outputs.tag }}.tgz oci://ghcr.io/${{ github.repository }}
+        run: helm push php-${{ needs.build-container.outputs.tag }}.tgz oci://ghcr.io/${{ github.repository }}
 
       # Step 3: Commit and push updated Helm chart
       - name: Commit and push changes
