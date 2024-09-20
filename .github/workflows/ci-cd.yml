@@ -68,7 +68,7 @@ jobs:
           IMAGE_NAME="sample-php-app"
           GITHUB_TAG=${{ needs.build-container.outputs.tag }}
           sed -i "s|tag:.*|tag: $GITHUB_TAG|g" ./helm/values.yaml
-          sed -i "s|version:.*|version: $GITHUB_TAG|g" ./helm/Chart.yml
+          sed -i "s|version:.*|version: $GITHUB_TAG|g" ./helm/Chart.yaml
 
       - name: Authenticate to GitHub Packages
         run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io --username ${{ github.actor }} --password-stdin
@@ -86,7 +86,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git pull origin main
           git add ./helm/values.yaml
-          git add ./helm/Chart.yml
+          git add ./helm/Chart.yaml
           git commit -m "Update Helm chart with Docker image $GITHUB_SHA" || echo "No changes to commit"
           git push origin main
         env:
