@@ -14,10 +14,14 @@ on:
 
 permissions:
   contents: write
+  packages: write
 
 jobs:
   build-container:
     runs-on: ubuntu-latest
+
+    outputs:
+      tag: ${{ steps.bump_version.outputs.next-version }}
 
     steps:
       - name: Checkout code
@@ -32,8 +36,19 @@ jobs:
           username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Get Current Tag
+        id: tag
+        run: echo tag=$(git describe --abbrev=0 --tags) >> $GITHUB_OUTPUT
+
+      - name: Bump release version
+        id: bump_version
+        uses: christian-draeger/increment-semantic-version@1.1.0
+        with:
+          current-version: ${{ steps.tag.outputs.tag }}
+          version-fragment: feature
+
       - name: Build and push Docker image
-        run: docker buildx build --platform linux/amd64 -t ${{ vars.DOCKER_USERNAME }}/sample-php-app:${{ github.sha }} -t ${{ vars.DOCKER_USERNAME }}/sample-php-app:latest --push .
+        run: docker buildx build --platform linux/amd64 -t ${{ vars.DOCKER_USERNAME }}/sample-php-app:${{ steps.bump_version.outputs.next-version }} -t ${{ vars.DOCKER_USERNAME }}/sample-php-app:latest --push .
 
   update-helm-chart:
     runs-on: ubuntu-latest
@@ -48,8 +63,17 @@ jobs:
       - name: Update Helm chart
         run: |
           IMAGE_NAME="sample-php-app"
-          GITHUB_SHA=${{ github.sha }}
+          GITHUB_SHA=${{ needs.build-container.outputs.tag }}
           sed -i "s|tag:.*|tag: $GITHUB_SHA|g" ./helm/values.yaml
+
+      - name: Authenticate to GitHub Packages
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io --username ${{ github.actor }} --password-stdin
+
+      - name: Package Helm Chart
+        run: helm package helm
+
+      - name: Push Helm Chart to GitHub Packages
+        run: helm push sample-php-app-${{ needs.build-container.outputs.tag }}.tgz oci://ghcr.io/${{ github.repository }}
 
       # Step 3: Commit and push updated Helm chart
       - name: Commit and push changes
@@ -60,6 +84,15 @@ jobs:
           git add ./helm/values.yaml
           git commit -m "Update Helm chart with Docker image $GITHUB_SHA" || echo "No changes to commit"
           git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.build-container.outputs.tag }}
+          name: Release ${{ needs.build-container.outputs.tag }}
+          body: Automated release for version ${{ needs.build-container.outputs.tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
