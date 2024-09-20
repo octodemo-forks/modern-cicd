@@ -11,6 +11,7 @@ on:
       - .github/workflows/ci-cd.yml
       - Dockerfile
       - 000-default.conf
+  workflow_dispatch:
 
 permissions:
   contents: write
