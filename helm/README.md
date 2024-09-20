@@ -6,9 +6,9 @@ A Helm chart for Kubernetes deployment of the PHP app
 
 ## Requirements
 
-| Repository | Name | Version |
-|------------|------|---------|
-| https://charts.bitnami.com/bitnami | redis | 20.1.3 |
+| Repository                         | Name  | Version |
+| ---------------------------------- | ----- | ------- |
+| https://charts.bitnami.com/bitnami | redis | 20.1.3  |
 
 ## Values
 
