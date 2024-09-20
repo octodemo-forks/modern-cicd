@@ -68,7 +68,7 @@ jobs:
           IMAGE_NAME="sample-php-app"
           GITHUB_TAG=${{ needs.build-container.outputs.tag }}
           sed -i "s|tag:.*|tag: $GITHUB_TAG|g" ./helm/values.yaml
-          sed -i "s|version:.*|version: $GITHUB_TAG|g" ./helm/Chart.yaml
+          sed -i "s|^version:.*|version: $GITHUB_TAG|" ./helm/Chart.yaml
 
       - name: Authenticate to GitHub Packages
         run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io --username ${{ github.actor }} --password-stdin
